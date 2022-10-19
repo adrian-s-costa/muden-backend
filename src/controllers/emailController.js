@@ -30,8 +30,8 @@ export async function emailController(req, res){
                 `
             });
         }
-        return res.sendStatus(200);
+        return res.send("success").status(200);
     }catch{
-        return res.sendStatus(500);
+        return res.send("error").status(500);
     }
 }

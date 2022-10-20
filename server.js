@@ -12,6 +12,6 @@ server.use(express.json());
 
 server.use(sendemail);
 
-server.listen(process.env.PORT, ()=>{
-    console.log("Server running on port " + 5000)
+server.listen(5000, ()=>{
+    console.log("Server running on port 5000")
 });

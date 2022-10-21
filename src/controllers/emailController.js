@@ -35,3 +35,7 @@ export async function emailController(req, res){
         return res.send("error").status(500);
     }
 }
+
+export function teste(){
+    return res.json({ teste:"a" })
+}

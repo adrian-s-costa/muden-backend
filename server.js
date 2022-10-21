@@ -12,4 +12,6 @@ server.use(express.json());
 
 server.use(sendemail);
 
-server.listen(5000);
+server.listen(5000, ()=>{
+    console.log("Server is on!")
+});

@@ -36,6 +36,6 @@ export async function emailController(req, res){
     }
 }
 
-export function teste(){
+export function teste(req, res){
     return res.json({ teste:"a" })
 }

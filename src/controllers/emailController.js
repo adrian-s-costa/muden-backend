@@ -1,4 +1,5 @@
 import { transporter } from "../config/mailer.js";
+import { db, objectId } from '../db/mongo.js'
 
 export async function emailController(req, res){
     try{
@@ -19,6 +20,7 @@ export async function emailController(req, res){
                 <p>Estado de origem: ${req.body.destinationState}</p>
                 `
             });
+            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, mudanca: req.body.date, type: "Orçamento"});
         }else if(req.body.type === "contact"){
             await transporter.sendMail({
                 from: '"Muden" <adriacosta1215@gmail.com>',
@@ -29,8 +31,18 @@ export async function emailController(req, res){
                 <p>Mensagem: ${req.body.message}</p>
                 `
             });
+            await db.collection('muden').insertOne({email: req.body.email, mensagem: req.body.message, type: "Parceria"});
         }
         return res.send("success").status(200);
+    }catch{
+        return res.send("error").status(500);
+    }
+}
+
+export async function getMessages(req, res){
+    try{
+        const messages = await db.collection('muden').find().toArray();
+        return res.send(messages).status(200);
     }catch{
         return res.send("error").status(500);
     }

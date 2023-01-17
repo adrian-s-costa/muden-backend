@@ -31,7 +31,7 @@ export async function emailController(req, res){
             //     <p>Mensagem: ${req.body.message}</p>
             //     `
             // });
-            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, servico: req.body.date, type: "Parceria"});
+            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, servico: req.body.servico, type: "Parceria"});
         }
         return res.send("success").status(200);
     }catch{

@@ -14,6 +14,6 @@ server.use(express.json());
 server.use(sendemail);
 server.use(loginUser);
 
-server.listen(5000, ()=>{
-    console.log("Server is on!")
+server.listen(process.env.PORT, ()=>{
+    console.log("Server is on!");
 });

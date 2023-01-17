@@ -1,10 +1,12 @@
 import { MongoClient, ObjectId } from "mongodb";
 
-const mongoClient = new MongoClient("mongodb+srv://dev:u268fDPETCPLX9zF@cluster0.gar4r1r.mongodb.net/?retryWrites=true&w=majority");
+dotenv.config();
+
+const mongoClient = new MongoClient(process.env.MONGO_URI);
 let db;
 
 mongoClient.connect().then(() => {
-	db = mongoClient.db("muden");
+	db = mongoClient.db(process.env.MONGO_DB);
 });
 
 const objectId = ObjectId;

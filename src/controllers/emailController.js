@@ -20,7 +20,7 @@ export async function emailController(req, res){
             //     <p>Estado de origem: ${req.body.destinationState}</p>
             //     `
             // });
-            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, mudanca: req.body.date, type: "Orçamento"});
+            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, mudanca: req.body.date, type: "Orçamento", time: req.body.time, code: req.body.code});
         }else if(req.body.type === "contact"){
             // await transporter.sendMail({
             //     from: '"Muden" <adriacosta1215@gmail.com>',
@@ -31,7 +31,7 @@ export async function emailController(req, res){
             //     <p>Mensagem: ${req.body.message}</p>
             //     `
             // });
-            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, servico: req.body.servico, type: "Parceria"});
+            await db.collection('muden').insertOne({nome: req.body.name, telefone: req.body.tel, email: req.body.email, servico: req.body.servico, type: "Parceria", time: req.body.time, code: req.body.code});
         }
         return res.send("success").status(200);
     }catch{
